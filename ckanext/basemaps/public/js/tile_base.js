@@ -16,10 +16,10 @@ return {
       if (val && this.options.tile_config[val]["url"]) {
         if (this.options.tile_config[val]["attribution"]) {
           //console.log($.trim(this.options.tile_config[val]["attribution"]));
-          layers_arr[$.trim(val)] = L.tileLayer(this.options.tile_config[val]["url"], {attribution: $.trim(this.options.tile_config[val]["attribution"])});
+          layers_arr[$.trim(val)] = L.tileLayer(this.options.tile_config[val]["url"], {attribution: $.trim(this.options.tile_config[val]["attribution"]),subdomains: this.options.tile_config[val]["subdomains"]});
         } else {
           //console.log("aaaa");
-          layers_arr[$.trim(val)] = L.tileLayer(this.options.tile_config[val]["url"]);
+          layers_arr[$.trim(val)] = L.tileLayer(this.options.tile_config[val]["url"],{subdomains: this.options.tile_config[val]["subdomains"]});
         }
       }
     }

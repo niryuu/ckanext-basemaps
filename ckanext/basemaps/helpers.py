@@ -3,6 +3,7 @@
 #* license. Please see
 
 import logging
+import json
 
 from ckan import plugins as p
 from ckan.lib import helpers as h
@@ -23,6 +24,7 @@ def get_tile_layer_config():
         arr_name = conf_dict['names']. split(',')
         arr_url = conf_dict['urls']. split(',')
         arr_attribution = conf_dict['attributions']. split(',')
+        arr_subdomains = json.JSONDecoder().decode(conf_dict['subdomains'])
         json_dict = {}
         for x in xrange(0,len(arr_name)):
             tmp_dict = {}
@@ -31,6 +33,10 @@ def get_tile_layer_config():
               tmp_dict['attribution'] = arr_attribution[x]
             except IndexError:
               tmp_dict['attribution'] = ""
+            try:
+              tmp_dict['subdomains'] = arr_subdomains[x]
+            except IndexError:
+              tmp_dict['subdomains'] = [""]
 
             json_dict[arr_name[x]] = tmp_dict
         return json_dict

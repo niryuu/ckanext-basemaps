@@ -13,7 +13,7 @@ return {
     $(this).delay(3000).queue(function() {
     var layers_arr = {};
     for (var val in this.options.tile_config) {
-      layers_arr[$.trim(val)] = L.tileLayer(this.options.tile_config[val]["url"], {attribution: $.trim(this.options.tile_config[val]["attribution"])});
+      layers_arr[$.trim(val)] = L.tileLayer(this.options.tile_config[val]["url"], {attribution: $.trim(this.options.tile_config[val]["attribution"]),subdomains: this.options.tile_config[val]["subdomains"]});
     }
 
     map.options.attributionControl = true;
